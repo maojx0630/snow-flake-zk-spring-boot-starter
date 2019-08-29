@@ -79,15 +79,15 @@ public class SnowFlakeZookeeper {
 					if (str.equals(uuid)) {
 						try {
 							client.delete().forPath(path);
-							log.info("zk存储信息比对成功,移除并重新注册");
+							log.info("zk连接已恢复,zk存储信息比对成功,即将移除并重新注册");
 						} catch (Exception ignored) {
 						}
 					}
 					client.create().withMode(CreateMode.EPHEMERAL).forPath(path);
-					log.info("zk连接已恢复并重新将当前信息注册,目前workerID为[{}]", workerId);
-				} catch (KeeperException.NodeExistsException exception) {
+					log.info("重新注册成功,目前workerID为[{}]", workerId);
+				} catch (KeeperException.NodeExistsException | KeeperException.NoNodeException exception) {
 					try {
-						log.info("zk连接已恢复,但当前节点信息已被占用将重新注册");
+						log.info("zk连接已恢复,但当前节点信息已被占用,或已被清除将重新注册");
 						initWorkIdAndCenterId();
 						log.info("重新注册,并重新初始化雪花信息成功,目前workerID为[{}]", workerId);
 					} catch (Exception e) {
@@ -108,8 +108,6 @@ public class SnowFlakeZookeeper {
 				}
 			}
 		});
-
-		log.info("Snowflake初始化成功,目前workerId为[{}]", workerId);
 	}
 
 	private void initWorkIdAndCenterId() {
@@ -131,7 +129,7 @@ public class SnowFlakeZookeeper {
 			} catch (Exception e) {
 				throw new RuntimeException(e.getMessage());
 			}
-			SnowflakeUtils.initSequence(workerId);
+			IdUtils.initSequence(workerId);
 			break;
 		}
 	}

@@ -1,5 +1,8 @@
 package com.github.maojx0630.snowFlakeZk;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * 基于Twitter的Snowflake算法实现分布式高效有序ID生产黑科技(sequence)——升级版Snowflake
  * <p>优化开源项目：https://gitee.com/yu120/sequence</p>
@@ -8,7 +11,7 @@ package com.github.maojx0630.snowFlakeZk;
  */
 final class Sequence {
 
-
+	private static final Logger log = LoggerFactory.getLogger(Sequence.class);
 	/**
 	 * 起始时间戳
 	 **/
@@ -49,7 +52,7 @@ final class Sequence {
 			throw new IllegalArgumentException("Worker Id can't be greater than " + MAX_WORKER_ID + " or less than 0");
 		}
 		this.workerId = workerId;
-
+		log.info("Sequence初始化成功,目前workerId为[{}]", workerId);
 	}
 
 	/**

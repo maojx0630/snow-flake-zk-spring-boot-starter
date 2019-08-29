@@ -10,9 +10,9 @@ import static com.github.maojx0630.snowFlakeZk.Sequence.*;
  * @author MaoJiaXing
  * @date 2019-08-29 13:44 
  */
-public final class SnowflakeUtils {
+public final class IdUtils {
 
-	private static Sequence sequence = new Sequence(0);
+	private static Sequence sequence;
 
 	/**
 	 * 根据Snowflake的ID，获取机器id
