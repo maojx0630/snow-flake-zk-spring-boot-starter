@@ -10,12 +10,10 @@ import org.slf4j.LoggerFactory;
 
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
-import java.util.Objects;
 import java.util.UUID;
 
 /**
  *
- * <br/>
  * @author MaoJiaXing
  * @date 2019-08-28 14:51
  */
@@ -27,15 +25,12 @@ public class SnowFlakeZookeeper {
 
 	private ZookeeperConfig config;
 
-	private ZookeeperOnlineOffline zoo;
-
 	private String uuid;
 
 	private long workerId = 0L;
 
-	public SnowFlakeZookeeper(ZookeeperConfig config, ZookeeperOnlineOffline zookeeperOnlineOffline) {
+	public SnowFlakeZookeeper(ZookeeperConfig config) {
 
-		this.zoo = zookeeperOnlineOffline;
 		//探测zk是否启动
 		if (config.isDetection()) {
 			try {
@@ -96,16 +91,10 @@ public class SnowFlakeZookeeper {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-				if (Objects.nonNull(zoo)) {
-					zoo.online();
-				}
 			} else {
 				log.error("zk连接已断开!!!!");
 				log.error("zk连接已断开!!!!");
 				log.error("zk连接已断开!!!!");
-				if (Objects.nonNull(zoo)) {
-					zoo.offline();
-				}
 			}
 		});
 	}

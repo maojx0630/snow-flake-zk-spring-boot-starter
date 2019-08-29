@@ -6,7 +6,6 @@ import static com.github.maojx0630.snowFlakeZk.Sequence.*;
 
 /**
  *
- * <br/>
  * @author MaoJiaXing
  * @date 2019-08-29 13:44 
  */

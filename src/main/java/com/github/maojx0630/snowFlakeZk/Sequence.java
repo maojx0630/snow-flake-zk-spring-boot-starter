@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * 基于Twitter的Snowflake算法实现分布式高效有序ID生产黑科技(sequence)——升级版Snowflake
- * <p>优化开源项目：https://gitee.com/yu120/sequence</p>
+ * 优化开源项目：https://gitee.com/yu120/sequence</p>
  * @author lry
  * @version 3.0
  */
