@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<modelVersion>4.0.0</modelVersion>
+<parent>
+	<groupId>org.sonatype.oss</groupId>
+	<artifactId>oss-parent</artifactId>
+	<version>7</version>
+</parent>
+
+<groupId>com.github.maojx0630</groupId>
+<artifactId>snow-flake-zk-spring-boot-starter</artifactId>
+<version>1.0</version>
+
+<properties>
+	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	<maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+	<java.version>1.8</java.version>
+	<maven.compiler.source>1.8</maven.compiler.source>
+	<maven.compiler.target>1.8</maven.compiler.target>
+</properties>
+
+<dependencies>
+
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-autoconfigure</artifactId>
+	</dependency>
+</dependencies>
+
+<dependencyManagement>
+	<dependencies>
+		<dependency>
+			<!-- Import dependency management from Spring Boot -->
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-dependencies</artifactId>
+			<version>1.5.20.RELEASE</version>
+			<type>pom</type>
+			<scope>import</scope>
+		</dependency>
+	</dependencies>
+</dependencyManagement>
+
+<licenses>
+	<license>
+		<name>The Apache Software License, Version 2.0</name>
+		<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+		<distribution>repo</distribution>
+	</license>
+</licenses>
+<scm>
+	<url>https://github.com/maojx0630/page-spring-boot-starter</url>
+	<connection>https://github.com/maojx0630/page-spring-boot-starter.git</connection>
+	<developerConnection>https://github.com/maojx0630</developerConnection>
+</scm>
+<developers>
+	<developer>
+		<name>MaoJiaXing</name>
+		<email>908156949@qq.com</email>
+		<url>https://github.com/maojx0630</url>
+	</developer>
+</developers>
+
+<distributionManagement>
+	<repository>
+		<id>releases</id>
+		<name>snapshots repository</name>
+		<url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+	</repository>
+	<snapshotRepository>
+		<id>snapshots</id>
+		<name>Nexus Snapshot Repository</name>
+		<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+	</snapshotRepository>
+</distributionManagement>
+
+<profiles>
+	<profile>
+		<id>release</id>
+		<build>
+			<plugins>
+				<!-- Javadoc -->
+				<plugin>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>2.9.1</version>
+					<inherited>true</inherited>
+					<executions>
+						<execution>
+							<phase>package</phase>
+							<goals>
+								<goal>jar</goal>
+							</goals>
+							<configuration>
+								<additionalparam>-Xdoclint:none</additionalparam>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+				<!-- GPG mvn clean deploy -P release -Dgpg.passphrase=YourPassphase-->
+				<plugin>
+					<artifactId>maven-gpg-plugin</artifactId>
+					<inherited>true</inherited>
+					<executions>
+						<execution>
+							<id>sign-artifacts</id>
+							<phase>verify</phase>
+							<goals>
+								<goal>sign</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+			</plugins>
+		</build>
+		<distributionManagement>
+			<snapshotRepository>
+				<id>snapshots</id>
+				<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+			</snapshotRepository>
+			<repository>
+				<id>releases</id>
+				<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+			</repository>
+		</distributionManagement>
+	</profile>
+</profiles>
+
+<build>
+	<plugins>
+		<!--Compiler-->
+		<plugin>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<inherited>true</inherited>
+			<configuration>
+				<source>1.8</source>
+				<target>1.8</target>
+			</configuration>
+		</plugin>
+		<!-- Source -->
+		<plugin>
+			<artifactId>maven-source-plugin</artifactId>
+			<version>2.2.1</version>
+			<inherited>true</inherited>
+			<executions>
+				<execution>
+					<phase>package</phase>
+					<goals>
+						<goal>jar-no-fork</goal>
+					</goals>
+				</execution>
+			</executions>
+		</plugin>
+	</plugins>
+</build>
+</project>
