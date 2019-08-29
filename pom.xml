@@ -10,7 +10,7 @@
 
 <groupId>com.github.maojx0630</groupId>
 <artifactId>snow-flake-zk-spring-boot-starter</artifactId>
-<version>1.0</version>
+<version>0.1</version>
 
 <properties>
 	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -19,6 +19,7 @@
 	<java.version>1.8</java.version>
 	<maven.compiler.source>1.8</maven.compiler.source>
 	<maven.compiler.target>1.8</maven.compiler.target>
+	<curator.version>2.13.0</curator.version>
 </properties>
 
 <dependencies>
@@ -30,6 +31,21 @@
 	<dependency>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-autoconfigure</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-configuration-processor</artifactId>
+		<optional>true</optional>
+	</dependency>
+	<dependency>
+		<groupId>org.apache.curator</groupId>
+		<artifactId>curator-framework</artifactId>
+		<version>${curator.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.apache.curator</groupId>
+		<artifactId>curator-recipes</artifactId>
+		<version>${curator.version}</version>
 	</dependency>
 </dependencies>
 
@@ -54,8 +70,8 @@
 	</license>
 </licenses>
 <scm>
-	<url>https://github.com/maojx0630/page-spring-boot-starter</url>
-	<connection>https://github.com/maojx0630/page-spring-boot-starter.git</connection>
+	<url>https://github.com/maojx0630/snow-flake-zk-spring-boot-starter</url>
+	<connection>https://github.com/maojx0630/snow-flake-zk-spring-boot-starter.git</connection>
 	<developerConnection>https://github.com/maojx0630</developerConnection>
 </scm>
 <developers>

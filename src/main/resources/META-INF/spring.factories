@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.github.maojx0630.snowFlakeZk.SnowFlakeZookeeperConfiguration,\
+com.github.maojx0630.snowFlakeZk.ZookeeperConfig
