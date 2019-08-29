@@ -34,6 +34,7 @@ public class ZookeeperConfig {
 	//是否探测zk是否可用,不支持zk集群模式下使用,集群模式请设置为false
 	private boolean detection = true;
 
+	//若无法连接zk 则使用默认
 	private long defaultWorkerId = 0;
 
 	public String getRoot() {
