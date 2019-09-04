@@ -4,7 +4,7 @@
 <dependency>
    <groupId>com.github.maojx0630</groupId>
    <artifactId>snow-flake-zk-spring-boot-starter</artifactId>
-   <version>0.2</version>
+   <version>0.4</version>
 </dependency>
 ```
 配置zk地址
